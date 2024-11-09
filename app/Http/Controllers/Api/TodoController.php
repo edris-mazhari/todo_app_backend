@@ -36,6 +36,7 @@ class TodoController extends Controller
         $user = auth()->user();
         // $request['owner'] = $user;
         $todo = $user->todos()->create($request->validated());
+        $todo->owner = $user;
         // $todo = Todo::create($request->validated());
         return response()->json(['data' => $todo]);
         //
@@ -49,10 +50,10 @@ class TodoController extends Controller
 
 
         if ($todo->owner == auth()->user()->id){
-            return response()->json(['data' => $todo]);
+            return response()->json(['status' =>true,'data' => $todo]);
         }
 
-        return response()->json(['data' => null]);
+        return response()->json(['status' =>false,'data' => null]);
         //
     }
 
