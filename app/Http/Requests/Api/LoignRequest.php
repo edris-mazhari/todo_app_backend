@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api;
 
 use App\BaseContext\ApiRequest;
-use Illuminate\Foundation\Http\FormRequest;
 
 class LoignRequest extends ApiRequest
 {
